@@ -1,0 +1,86 @@
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: credit_postgres
+    environment:
+      POSTGRES_DB: creditscoring
+      POSTGRES_USER: credituser
+      POSTGRES_PASSWORD: creditpass123
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - credit-net
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U credituser -d creditscoring"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: credit_pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@creditscoring.com
+      PGADMIN_DEFAULT_PASSWORD: admin123
+    ports:
+      - "5050:80"
+    networks:
+      - credit-net
+    depends_on:
+      - postgres
+
+  ai-service:
+    build:
+      context: ./ai-service
+      dockerfile: Dockerfile
+    container_name: credit_ai
+    ports:
+      - "8000:8000"
+    networks:
+      - credit-net
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 15s
+      timeout: 10s
+      retries: 5
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: credit_backend
+    ports:
+      - "5000:5000"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Host=postgres;Port=5432;Database=creditscoring;Username=credituser;Password=creditpass123
+      - AiService__BaseUrl=http://ai-service:8000
+    networks:
+      - credit-net
+    depends_on:
+      postgres:
+        condition: service_healthy
+      ai-service:
+        condition: service_healthy
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: credit_frontend
+    ports:
+      - "4200:80"
+    networks:
+      - credit-net
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:
+
+networks:
+  credit-net:
+    driver: bridge
