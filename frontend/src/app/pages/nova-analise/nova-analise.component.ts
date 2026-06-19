@@ -21,7 +21,7 @@ import { switchMap } from 'rxjs/operators';
     <div class="analise-page">
       <div class="form-section">
         <h2>Solicitar Análise de Crédito</h2>
-        <p class="text-muted">Preencha os dados do cliente para avaliação do modelo MLP PyTorch</p>
+        <p class="text-muted">Preencha os dados do cliente para avaliação</p>
         
         <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form-grid mt-4">
           <mat-form-field appearance="outline">
@@ -85,7 +85,7 @@ import { switchMap } from 'rxjs/operators';
             
             <div class="decision-box" [ngClass]="resultado.aprovado ? 'approved' : 'denied'">
               <h3>{{ resultado.aprovado ? 'CRÉDITO APROVADO' : 'CRÉDITO NEGADO' }}</h3>
-              <p>A rede neural estimou <b>{{ resultado.probabilidadeInadimplencia }}%</b> de chance de inadimplência.</p>
+              <p><b>{{ resultado.probabilidadeInadimplencia }}%</b> de chance de inadimplência.</p>
             </div>
             
             <button mat-stroked-button color="primary" (click)="resetForm()" class="mt-4">Nova Consulta</button>

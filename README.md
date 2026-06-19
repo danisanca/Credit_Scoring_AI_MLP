@@ -21,7 +21,7 @@ Eu construi este projeto do zero para demonstrar minha capacidade de criar o flu
 ### Nova Analise de Credito
 > Screenshot AQUI !!!
 
-### Resultado da Predicao com Gauge de Risco
+### Resultado da Predicao com Medidor de Risco
 > Screenshot AQUI !!!
 
 ### Tabela de Historico com Scores
