@@ -16,16 +16,13 @@ Eu construi este projeto do zero para demonstrar minha capacidade de criar o flu
 ## Screenshots
 
 ### Dashboard — Visao Geral do Risco
-> Screenshot AQUI !!!
+<img width="1338" height="615" alt="Visão Geral" src="https://github.com/user-attachments/assets/14ab42bd-ef28-41bd-a3af-3277c88722cf" />
 
-### Nova Analise de Credito
-> Screenshot AQUI !!!
-
-### Resultado da Predicao com Medidor de Risco
-> Screenshot AQUI !!!
+### Analise e Resultado da Predicao com Medidor de Risco
+<img width="1273" height="599" alt="Resultado Analise" src="https://github.com/user-attachments/assets/d076ca94-3df1-40fb-8392-d9d7480affc1" />
 
 ### Tabela de Historico com Scores
-> Screenshot AQUI !!!
+<img width="1349" height="547" alt="Historico" src="https://github.com/user-attachments/assets/eb712856-2cd1-49c0-9857-1cd7793d2742" />
 
 ## Arquitetura
 
