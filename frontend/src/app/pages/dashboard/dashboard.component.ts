@@ -93,10 +93,10 @@ import { ApiService, DashboardResponse } from '../../services/api.service';
   styles: [`
     .dashboard { display: flex; flex-direction: column; gap: 24px; }
     .header h1 { font-size: 28px; margin-bottom: 8px; }
-    .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
-    .kpi-header { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 16px; font-weight: 500; }
-    .kpi-header span { flex: 1; min-width: 0; word-break: break-word; overflow-wrap: break-word; line-height: 1.3; }
-    .kpi-header mat-icon { flex-shrink: 0; }
+    .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; }
+    .kpi-header { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; margin-bottom: 12px; font-weight: 500; }
+    .kpi-header span { font-size: 13px; color: var(--text-secondary); word-break: break-word; overflow-wrap: break-word; line-height: 1.3; }
+    .kpi-header mat-icon { font-size: 20px; width: 20px; height: 20px; }
     .kpi-card h2 { font-size: 36px; margin: 0; }
     
     .table-container { background: var(--bg-secondary); border-radius: 12px; overflow: hidden; border: 1px solid var(--bg-tertiary); }
